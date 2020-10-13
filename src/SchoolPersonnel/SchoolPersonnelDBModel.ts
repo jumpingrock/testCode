@@ -9,6 +9,7 @@ import {
   Table,
   UpdatedAt
 } from 'sequelize-typescript';
+import {ROLE} from "./SchoolPersonnel";
 
 @Table({tableName: 'school_personnel'})
 
@@ -28,7 +29,7 @@ export class SchoolPersonnelDBModel extends Model<SchoolPersonnelDBModel>{
 
   @AllowNull(false)
   @Column({type: DataType.STRING})
-  role: string
+  role: ROLE
 
   @CreatedAt
   @Column({ type: DataType.DATE })
