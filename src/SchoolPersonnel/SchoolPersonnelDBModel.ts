@@ -10,7 +10,7 @@ import {
   UpdatedAt
 } from 'sequelize-typescript';
 
-@Table({tableName: 'schoolpersonnel'})
+@Table({tableName: 'school_personnel'})
 
 export class SchoolPersonnelDBModel extends Model<SchoolPersonnelDBModel>{
   @PrimaryKey
