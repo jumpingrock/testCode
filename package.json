@@ -22,7 +22,7 @@
     "express": "^4.17.1",
     "http-status-codes": "^1.4.0",
     "mysql2": "^2.1.0",
-    "sequelize": "^6.3.3",
+    "sequelize": "^5.22.0",
     "sequelize-typescript": "^1.1.0",
     "winston": "^3.3.3"
   },

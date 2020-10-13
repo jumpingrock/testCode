@@ -6,7 +6,7 @@ import {
   DataType,
   Model,
   PrimaryKey,
-  Table,
+  Table, Unique,
   UpdatedAt
 } from 'sequelize-typescript';
 import {ROLE} from "./SchoolPersonnel";
@@ -25,6 +25,7 @@ export class SchoolPersonnelDBModel extends Model<SchoolPersonnelDBModel>{
 
   @AllowNull(false)
   @Column({type: DataType.STRING})
+  @Unique(true)
   email: string
 
   @AllowNull(false)

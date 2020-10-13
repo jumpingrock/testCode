@@ -30,5 +30,11 @@ describe('school personnel service', () => {
 
   })
 
-  
+  it('should return an error if no personnel was created or found', async () => {
+    const schoolPersonnelMock = require('../SchoolPersonnelDBModel').SchoolPersonnelDBModel
+    schoolPersonnelMock.findOrCreate.mockRejectedValueOnce(new Error('test error'))
+
+    await expect(schoolPersonnelService.createPersonnel(personnel))
+      .rejects.toThrowError(Error)
+  })
 })

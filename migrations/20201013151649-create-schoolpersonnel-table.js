@@ -17,6 +17,7 @@ module.exports = {
       email: {
         type: new DataTypes.STRING,
         allowNull: false,
+        unique: true
       },
       role: {
         type: new DataTypes.STRING,
