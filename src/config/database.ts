@@ -1,5 +1,6 @@
-import { Sequelize } from 'sequelize';
 import Logger from './logger';
+import {models} from "./models";
+import {Sequelize} from "sequelize-typescript";
 
 const LOG = new Logger('database.ts');
 const {
@@ -31,6 +32,8 @@ const sequelize = new Sequelize(DB_SCHEMA, DB_USER, DB_PW, {
   }
 
 });
+
+sequelize.addModels(models)
 
 export default sequelize;
 

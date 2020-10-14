@@ -3,13 +3,12 @@ import {
   AutoIncrement, BelongsTo,
   Column,
   CreatedAt,
-  DataType, ForeignKey,
+  DataType, ForeignKey, HasMany,
   Model,
   PrimaryKey,
   Table, Unique,
   UpdatedAt
 } from "sequelize-typescript";
-import {SUBJECT} from "../subject/subject";
 import {SchoolPersonnelDBModel} from "../SchoolPersonnel/SchoolPersonnelDBModel";
 
 @Table({tableName: 'class_content'})
@@ -22,15 +21,15 @@ export class ClassContentDBModel extends Model<ClassContentDBModel> {
 
   @AllowNull(false)
   @Column({type: DataType.STRING})
-  subjectCode: SUBJECT
+  subjectCode: string
 
   @AllowNull(false)
   @Column({type: DataType.STRING})
   subjectName: string
 
   @AllowNull(false)
-  @Column({type: DataType.STRING})
   @Unique(true)
+  @Column({type: DataType.STRING})
   classCode: string
 
   @AllowNull(false)
@@ -51,4 +50,7 @@ export class ClassContentDBModel extends Model<ClassContentDBModel> {
 
   @BelongsTo(() => SchoolPersonnelDBModel)
   teacher: SchoolPersonnelDBModel
+
+  @HasMany(() => SchoolPersonnelDBModel)
+  students: SchoolPersonnelDBModel[]
 }

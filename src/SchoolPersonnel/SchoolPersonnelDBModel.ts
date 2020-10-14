@@ -24,8 +24,8 @@ export class SchoolPersonnelDBModel extends Model<SchoolPersonnelDBModel>{
   name: string;
 
   @AllowNull(false)
-  @Column({type: DataType.STRING})
   @Unique(true)
+  @Column({type: DataType.STRING})
   email: string
 
   @AllowNull(false)

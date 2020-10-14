@@ -25,7 +25,7 @@ describe('school personnel service', () => {
     const schoolPersonnelMock = require('../SchoolPersonnelDBModel').SchoolPersonnelDBModel
     schoolPersonnelMock.findOrCreate.mockResolvedValueOnce([personnel, true])
 
-    await expect(schoolPersonnelService.createPersonnel(personnel))
+    await expect(schoolPersonnelService.createOrFindPersonnel(personnel))
       .resolves.toBeInstanceOf(SchoolPersonnel)
 
   })
@@ -34,7 +34,7 @@ describe('school personnel service', () => {
     const schoolPersonnelMock = require('../SchoolPersonnelDBModel').SchoolPersonnelDBModel
     schoolPersonnelMock.findOrCreate.mockRejectedValueOnce(new Error('test error'))
 
-    await expect(schoolPersonnelService.createPersonnel(personnel))
+    await expect(schoolPersonnelService.createOrFindPersonnel(personnel))
       .rejects.toThrowError(Error)
   })
 })

@@ -3,13 +3,10 @@ import {SchoolPersonnelDBModel} from "../SchoolPersonnelDBModel";
 import Logger from "../../config/logger";
 
 export class SchoolPersonnelService {
-  public async createPersonnel (personnel: SchoolPersonnel): Promise<SchoolPersonnel>{
+  public async createOrFindPersonnel (personnel: SchoolPersonnel): Promise<SchoolPersonnel>{
 
-    const personnelDBObject: any = {
-      ...personnel
-    }
     const foundOrCreated = await SchoolPersonnelDBModel
-      .findOrCreate(personnelDBObject)
+      .findOrCreate({where: {...personnel}})
 
     if(!foundOrCreated) {
       const logger = new Logger('SchoolPersonnelService')
