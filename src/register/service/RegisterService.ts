@@ -22,8 +22,9 @@ export const RegisterService: RequestHandler = async (req, res) => {
   const reqObject = req.body;
   const schoolPersonals = createSchoolPersonnel(reqObject);
   const teacher: SchoolPersonnel = new SchoolPersonnel(reqObject.teacher.name, reqObject.teacher.email, ROLE.TEACH);
-  const subject: SUBJECT = reqObject.subjectCode;
   const classId: ClassIdentifier = new ClassIdentifier(reqObject.classCode, reqObject.className);
+  const subject: SUBJECT = reqObject.subjectCode;
+
   const createdClass: ClassContentDBModel = await classContentService.createClass(teacher, schoolPersonals, subject, classId);
   let newError: ErrorBase =  null;
 

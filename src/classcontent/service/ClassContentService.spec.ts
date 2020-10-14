@@ -1,3 +1,4 @@
+import {ClassIdentifier} from "../ClassContent";
 
 
 jest.mock('../ClassContentDBModel', () => {
@@ -10,7 +11,6 @@ jest.mock('../ClassContentDBModel', () => {
 import {ClassContentService} from './ClassContentService';
 import {ROLE, SchoolPersonnel} from '../../schoolpersonnel/SchoolPersonnel';
 import {SUBJECT} from '../../subject/subject';
-import {ClassIdentifier} from 'classcontent';
 
 
 describe('class content service', () => {

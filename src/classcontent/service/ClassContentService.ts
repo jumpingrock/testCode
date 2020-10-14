@@ -2,7 +2,7 @@ import {ClassContentDBModel} from '../ClassContentDBModel';
 import {SchoolPersonnelDBModel} from '../../schoolpersonnel/SchoolPersonnelDBModel';
 import {SUBJECT} from '../../subject/subject';
 import {SchoolPersonnel} from '../../schoolpersonnel/SchoolPersonnel';
-import {ClassIdentifier} from 'classcontent';
+import {ClassIdentifier} from "../ClassContent";
 
 export class ClassContentService {
   public createClass = async (
@@ -16,12 +16,13 @@ export class ClassContentService {
       subjectName: subject,
       classCode: classId.classCode,
       className: classId.className,
-      teacher,
-      students
+      ...teacher,
+      ...students
 
     };
     const createOption = {
-      include: [{models: SchoolPersonnelDBModel}]
+      include: [{model: SchoolPersonnelDBModel}],
+      returning: true
     }
     const classContentDBModel = await ClassContentDBModel.create(classDBModelObj, createOption)
 

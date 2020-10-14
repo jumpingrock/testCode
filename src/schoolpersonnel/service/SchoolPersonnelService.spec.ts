@@ -1,3 +1,4 @@
+import {ROLE, SchoolPersonnel} from "../SchoolPersonnel";
 
 jest.mock('../SchoolPersonnelDBModel', () => {
   return {
@@ -9,7 +10,6 @@ jest.mock('../SchoolPersonnelDBModel', () => {
 
 /* eslint-disable @typescript-eslint/no-var-requires */
 import {SchoolPersonnelService} from './SchoolPersonnelService';
-import {ROLE, SchoolPersonnel} from 'schoolpersonnel';
 
 describe('school personnel service', () => {
   let schoolPersonnelService: SchoolPersonnelService = null;

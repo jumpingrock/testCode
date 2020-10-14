@@ -1,4 +1,4 @@
-import {SchoolPersonnel} from 'schoolpersonnel';
+import {SchoolPersonnel} from '../schoolpersonnel';
 import {SchoolPersonnelDBModel} from '../SchoolPersonnelDBModel';
 import Logger from '../../config/logger';
 
