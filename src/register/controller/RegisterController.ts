@@ -1,4 +1,4 @@
-import Express, { RequestHandler } from 'express';
+import Express from 'express';
 import { RegisterService } from '../service/RegisterService'
 const RegisterController = Express.Router();
 

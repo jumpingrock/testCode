@@ -1,8 +1,10 @@
 import {RequestHandler} from 'express';
 import ErrorBase from '../../errors/ErrorBase';
-import {ROLE, SchoolPersonnel} from "../../SchoolPersonnel/SchoolPersonnel";
-import {SchoolPersonnelService} from "../../SchoolPersonnel/service/SchoolPersonnelService";
-import sequelize from "../../config/database";
+import {ROLE, SchoolPersonnel} from '../../schoolpersonnel/SchoolPersonnel';
+import {ClassContentService} from '../../classcontent/service/ClassContentService';
+import {SUBJECT} from '../../subject/subject';
+import {ClassIdentifier} from '../../classcontent/ClassContent';
+import {ClassContentDBModel} from '../../classcontent/ClassContentDBModel';
 
 
 function createSchoolPersonnel(reqObj: any) {
@@ -14,21 +16,22 @@ function createSchoolPersonnel(reqObj: any) {
 }
 
 export const RegisterService: RequestHandler = async (req, res) => {
-  const schoolPersonnelService: SchoolPersonnelService = new SchoolPersonnelService();
+  const classContentService: ClassContentService = new ClassContentService();
   console.log(req.body);
 
   const reqObject = req.body;
-  const schoolPersonnels = createSchoolPersonnel(reqObject);
+  const schoolPersonals = createSchoolPersonnel(reqObject);
   const teacher: SchoolPersonnel = new SchoolPersonnel(reqObject.teacher.name, reqObject.teacher.email, ROLE.TEACH);
+  const subject: SUBJECT = reqObject.subjectCode;
+  const classId: ClassIdentifier = new ClassIdentifier(reqObject.classCode, reqObject.className);
+  const createdClass: ClassContentDBModel = await classContentService.createClass(teacher, schoolPersonals, subject, classId);
+  let newError: ErrorBase =  null;
 
-  await sequelize.transaction(async (transaction) => {
-    for(let i=0; i<schoolPersonnels.length; i++) {
-      await schoolPersonnelService.createOrFindPersonnel(schoolPersonnels[i]);
-    }
+  if(createdClass) {
+    newError = new ErrorBase('Error processing registration', 500, 500)
+  }
 
 
-  })
-  const newError = new ErrorBase('Error processing registration', 500, 500)
-  return res.sendStatus(newError.getHttpStatusCode());
+  return createdClass || res.sendStatus(newError.getHttpStatusCode());
 }
 

@@ -1,6 +1,6 @@
 import Express from 'express';
 import HealthcheckController from './healthcheck/HealthcheckController';
-import RegisterController from "./register/controller/RegisterController";
+import RegisterController from './register/controller/RegisterController';
 
 const router = Express.Router();
 

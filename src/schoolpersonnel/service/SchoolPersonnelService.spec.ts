@@ -8,8 +8,8 @@ jest.mock('../SchoolPersonnelDBModel', () => {
 })
 
 /* eslint-disable @typescript-eslint/no-var-requires */
-import {SchoolPersonnelService} from "./SchoolPersonnelService";
-import {ROLE, SchoolPersonnel} from "../SchoolPersonnel";
+import {SchoolPersonnelService} from './SchoolPersonnelService';
+import {ROLE, SchoolPersonnel} from 'schoolpersonnel';
 
 describe('school personnel service', () => {
   let schoolPersonnelService: SchoolPersonnelService = null;
@@ -17,7 +17,7 @@ describe('school personnel service', () => {
 
   beforeEach(() => {
     schoolPersonnelService = new SchoolPersonnelService();
-    personnel= new SchoolPersonnel(`stud0`, `stud0@gmail.com`, ROLE.STD);
+    personnel= new SchoolPersonnel('stud0', 'stud0@gmail.com', ROLE.STD);
 
   })
   it('should return a found or created user', async () => {

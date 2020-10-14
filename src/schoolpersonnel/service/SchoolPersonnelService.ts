@@ -1,6 +1,6 @@
-import {SchoolPersonnel} from "../SchoolPersonnel";
-import {SchoolPersonnelDBModel} from "../SchoolPersonnelDBModel";
-import Logger from "../../config/logger";
+import {SchoolPersonnel} from 'schoolpersonnel';
+import {SchoolPersonnelDBModel} from '../SchoolPersonnelDBModel';
+import Logger from '../../config/logger';
 
 export class SchoolPersonnelService {
   public async createOrFindPersonnel (personnel: SchoolPersonnel): Promise<SchoolPersonnel>{

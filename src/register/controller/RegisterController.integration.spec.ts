@@ -1,5 +1,3 @@
-
-
 jest.mock('../../SchoolPersonnel/SchoolPersonnelDBModel', () => {
   return {
     SchoolPersonnelDBModel: {
@@ -7,19 +5,18 @@ jest.mock('../../SchoolPersonnel/SchoolPersonnelDBModel', () => {
     }
   }
 })
-import App from "../../app";
+import App from '../../app';
 import chai from 'chai'
-import {Application} from "express";
-import {SUBJECT} from "../../subject/subject";
-import chaiHttp from "chai-http";
-import {ROLE, SchoolPersonnel} from "../../SchoolPersonnel/SchoolPersonnel";
+import {Application} from 'express';
+import chaiHttp from 'chai-http';
+import {ROLE, SchoolPersonnel} from '../../schoolpersonnel/SchoolPersonnel';
 
 let testApp: Application;
 chai.use(chaiHttp);
 
 describe('register controller integration test', () => {
   beforeEach(() => {
-     testApp = App;
+    testApp = App;
   })
   it('should return success code 204 when called with the correct request',  async () => {
     const requestBody = {
@@ -29,25 +26,25 @@ describe('register controller integration test', () => {
       },
       students: [
         {
-        name: 'Student 1',
-        email: 'student1@gmail.com'
+          name: 'Student 1',
+          email: 'student1@gmail.com'
         }, {
-        name: 'Student 2',
-        email: 'student2@gmail.com'
+          name: 'Student 2',
+          email: 'student2@gmail.com'
         }
       ],
       subject: {
-        subjectCode: SUBJECT.ENG,
-        name: (SUBJECT.ENG).valueOf()
+        subjectCode: 'ENG',
+        name: 'ENGLISH'
       },
       class: {
         classCode: 'P1-1',
         name: 'P1 Integrity'
       }
     }
-    const personnel= new SchoolPersonnel(`stud0`, `stud0@gmail.com`, ROLE.STD);
+    const personnel= new SchoolPersonnel('stud0', 'stud0@gmail.com', ROLE.STD);
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const schoolPersonnelMock = require('../../SchoolPersonnel/SchoolPersonnelDBModel').SchoolPersonnelDBModel
+    const schoolPersonnelMock = require('../../schoolpersonnel/SchoolPersonnelDBModel').SchoolPersonnelDBModel
     schoolPersonnelMock.findOrCreate.mockResolvedValueOnce([personnel, true])
     await expect(
       chai

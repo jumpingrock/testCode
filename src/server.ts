@@ -26,4 +26,4 @@ const startApplication = async (retryCount: number) => {
     LOG.error('Unable to start application');
   }
 };
-const app = startApplication(MAX_RETRY);
+// const app = startApplication(MAX_RETRY);

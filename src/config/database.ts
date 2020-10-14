@@ -1,6 +1,6 @@
 import Logger from './logger';
-import {models} from "./models";
-import {Sequelize} from "sequelize-typescript";
+import {models} from './models';
+import {Sequelize} from 'sequelize-typescript';
 
 const LOG = new Logger('database.ts');
 const {

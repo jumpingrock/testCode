@@ -9,7 +9,7 @@ import {
   Table, Unique,
   UpdatedAt
 } from 'sequelize-typescript';
-import {ROLE} from "./SchoolPersonnel";
+import {ROLE} from './SchoolPersonnel';
 
 @Table({tableName: 'school_personnel'})
 

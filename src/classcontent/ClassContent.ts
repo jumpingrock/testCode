@@ -1,5 +1,15 @@
-import {SchoolPersonnel} from "../SchoolPersonnel/SchoolPersonnel";
-import {SUBJECT} from "../subject/subject";
+import {SchoolPersonnel} from '../schoolpersonnel/SchoolPersonnel';
+import {SUBJECT} from '../subject/subject';
+
+export class ClassIdentifier {
+  classCode: string;
+  className: string;
+  constructor(classCode: string, className: string){
+    this.className = className
+    this.classCode = classCode
+  }
+
+}
 
 export class ClassContent {
   id: number;

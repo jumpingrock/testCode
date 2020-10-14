@@ -8,8 +8,8 @@ import {
   PrimaryKey,
   Table, Unique,
   UpdatedAt
-} from "sequelize-typescript";
-import {SchoolPersonnelDBModel} from "../SchoolPersonnel/SchoolPersonnelDBModel";
+} from 'sequelize-typescript';
+import {SchoolPersonnelDBModel} from '../schoolpersonnel/SchoolPersonnelDBModel';
 
 @Table({tableName: 'class_content'})
 
