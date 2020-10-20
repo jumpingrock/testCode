@@ -10,6 +10,10 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true,
       },
+      classId: {
+        type: Sequelize.INTEGER,
+        references: { model: 'SchoolPersonnel', key: 'id' },
+      },
       name: {
         type: new DataTypes.STRING,
         allowNull: false,

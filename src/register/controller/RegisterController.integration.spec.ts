@@ -5,6 +5,13 @@ jest.mock('../../SchoolPersonnel/SchoolPersonnelDBModel', () => {
     }
   }
 })
+jest.mock('../../classcontent/ClassContentDBModel', () => {
+  return {
+    ClassContentDBModel: {
+      create: jest.fn(),
+    }
+  }
+})
 import App from '../../app';
 import chai from 'chai'
 import {Application} from 'express';
@@ -44,8 +51,8 @@ describe('register controller integration test', () => {
     }
     const personnel= new SchoolPersonnel('stud0', 'stud0@gmail.com', ROLE.STD);
     // eslint-disable-next-line @typescript-eslint/no-var-requires
-    const schoolPersonnelMock = require('../../schoolpersonnel/SchoolPersonnelDBModel').SchoolPersonnelDBModel
-    schoolPersonnelMock.findOrCreate.mockResolvedValueOnce([personnel, true])
+    const classContentMock = require('../../classcontent/ClassContentDBModel').ClassContentDBModel
+    classContentMock.create.mockResolvedValueOnce([personnel, true])
     await expect(
       chai
         .request(testApp)

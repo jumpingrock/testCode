@@ -19,6 +19,5 @@ export class ClassContent {
   className: string;
   createdAt: Date;
   updatedAt: Date;
-  teacher: SchoolPersonnel;
   student: Array<SchoolPersonnel>;
 }

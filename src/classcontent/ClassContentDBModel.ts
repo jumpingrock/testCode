@@ -1,15 +1,16 @@
 import {
   AllowNull,
-  AutoIncrement, BelongsTo,
+  AutoIncrement, BelongsToMany,
   Column,
   CreatedAt,
-  DataType, ForeignKey, HasMany,
+  DataType,
   Model,
   PrimaryKey,
   Table, Unique,
   UpdatedAt
 } from 'sequelize-typescript';
 import {SchoolPersonnelDBModel} from '../schoolpersonnel/SchoolPersonnelDBModel';
+import { NominalRollDBModel } from '../nominalroll/NominalRollDBModel';
 
 @Table({tableName: 'class_content'})
 
@@ -44,13 +45,6 @@ export class ClassContentDBModel extends Model<ClassContentDBModel> {
   @Column({ type: DataType.DATE })
   public readonly updatedAt: Date;
 
-  @ForeignKey(() => SchoolPersonnelDBModel)
-  @Column({type: DataType.INTEGER})
-  teacherId: number
-
-  @BelongsTo(() => SchoolPersonnelDBModel)
-  teacher: SchoolPersonnelDBModel
-
-  @HasMany(() => SchoolPersonnelDBModel)
-  students: SchoolPersonnelDBModel[]
+  @BelongsToMany(() => SchoolPersonnelDBModel, () => NominalRollDBModel)
+  schoolPersonnel: Array<SchoolPersonnelDBModel & {NominalRollDBModel: NominalRollDBModel}>;
 }

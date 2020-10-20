@@ -33,10 +33,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE,
       },
-      teacherId: {
-        type: Sequelize.INTEGER,
-        references: { model: 'SchoolPersonnelDBModel', key: 'id' },
-      },
+
     });
   },
 
